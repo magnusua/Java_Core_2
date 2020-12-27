@@ -35,7 +35,7 @@ public class Main {
             out.println("Измененный масив: \n" + Arrays.toString(SwapArray(chars, pos1, pos2)));
             //          Task 2.
             ToArrayList(chars); //переводим массив в ArrayList
-            out.println("\n"+String.join(", ", chars)); //печатаем что получилось https://stackoverflow.com/questions/599161/best-way-to-convert-an-arraylist-to-a-string
+            out.println("\n" + String.join(", ", chars)); //печатаем что получилось https://stackoverflow.com/questions/599161/best-way-to-convert-an-arraylist-to-a-string
             out.println("\n");
         }).start();
 //          Task            3.
@@ -85,7 +85,8 @@ public class Main {
     }
 
     public static String RandomName() {
-        char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        char[] chars = IntStream.rangeClosed('A', 'z').mapToObj(c -> "" + (char) c).collect(Collectors.joining()).toCharArray();
+
         int NameLength = (2 + random.nextInt(6));
         String Surname = "Box_";
         StringBuilder sb = new StringBuilder(NameLength); //создаем строку
@@ -94,6 +95,6 @@ public class Main {
             char c = chars[random.nextInt(chars.length)];
             sb.append(c); //генерируем строку из случайных букв
         }
-        return sb.substring(0, 1).toUpperCase() + sb.substring(1); //выводим строку с Заглавной 1 буквой
+        return sb.substring(0, 1).toUpperCase() + sb.substring(1).toLowerCase(); //выводим строку с Заглавной 1 буквой
     }
 }
